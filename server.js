@@ -4,9 +4,14 @@ const path = require('path');
 const cors = require('cors');
 
 const app = express();
-const PORT = 4000;
+// const PORT = 4000;
 
 app.use(cors());
+
+// Endpoint root
+app.get('/', (req, res) => {
+    res.send('Dictionary API — use /api/(language)-words and replace (language) with your preferred language. Currently only supports en, id, jp, it, de, and fr.');
+});
 
 // Endpoint English
 app.get('/api/en-words', (req, res) => {
@@ -86,6 +91,8 @@ app.get('/api/it-words', (req, res) => {
     }
 })
 
-app.listen(PORT, () => {
-    console.log(`Kamus-api berjalan di http://localhost:${PORT}`)
-})
+// app.listen(PORT, () => {
+//     console.log(`Kamus-api berjalan di http://localhost:${PORT}`)
+// })
+
+module.exports = app;
