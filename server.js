@@ -39,6 +39,19 @@ app.get('/api/id-words', (req, res) => {
     }
 })
 
+// Endpoint Indonesia 2
+app.get('/api/id-words-2', (req, res) => {
+    try {
+        const filePath = path.join(__dirname, '/Data/words_id2.txt');
+        const data = fs.readFileSync(filePath, 'utf-8');
+        const lines = data.split('\n').filter(line => line.trim() !== '');
+
+        res.json({words: lines});
+    } catch (error){
+        res.status(500).json({ error: 'Gagal membaca file kamus'});
+    }
+})
+
 // Endpoint Japan
 app.get('/api/jp-words', (req, res) => {
     try {
